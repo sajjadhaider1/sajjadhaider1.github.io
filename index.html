@@ -1,1 +1,60 @@
-Coming soon...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrix Effect</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrixCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas size to cover the entire window
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const characters = '01';
+    const fontSize = 15;
+    const columns = Math.floor(canvas.width / fontSize);
+
+    // Create an array to store the falling characters
+    const matrix = Array(columns).fill().map(() => 0);
+
+    // Function to draw the matrix
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#0F0'; // Green color for characters
+      ctx.font = `${fontSize}px monospace`;
+
+      matrix.forEach((character, index) => {
+        const text = characters[Math.floor(Math.random() * characters.length)];
+        ctx.fillText(text, index * fontSize, character * fontSize);
+
+        // Randomly reset the falling character
+        if (Math.random() > 0.95) {
+          matrix[index] = 0;
+        }
+
+        // Move the character down the canvas
+        matrix[index] = (matrix[index] + 1) % (canvas.height / fontSize);
+      });
+    }
+
+    // Update and redraw the matrix every 0.2 seconds
+    setInterval(drawMatrix, 200);
+  </script>
+</body>
+</html>
