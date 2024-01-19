@@ -25,7 +25,7 @@
     canvas.height = window.innerHeight;
 
     const characters = '01';
-    const fontSize = 15;
+    const fontSize = 40;
     const columns = Math.floor(canvas.width / fontSize);
 
     // Create an array to store the falling characters
@@ -36,7 +36,7 @@
       ctx.fillStyle = 'rgba(0, 0, 0, 0)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#0F0'; // Green color for characters
+      ctx.fillStyle = '#232e21'; // Green color for characters
       ctx.font = `${fontSize}px monospace`;
 
       matrix.forEach((character, index) => {
