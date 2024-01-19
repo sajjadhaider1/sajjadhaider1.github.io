@@ -33,7 +33,7 @@
 
     // Function to draw the matrix
     function drawMatrix() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = '#0F0'; // Green color for characters
@@ -54,7 +54,7 @@
     }
 
     // Update and redraw the matrix every 0.2 seconds
-    setInterval(drawMatrix, 200);
+    setInterval(drawMatrix, 100);
   </script>
 </body>
 </html>
